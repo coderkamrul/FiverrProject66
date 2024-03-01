@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <title>Coming Soon</title>
+  <style>
+    
+    body {
+    font-family: "Oswald", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .left-side, .right-side {
+      flex: 1;
+      /*! padding: 20px; */
+      text-align: center;
+    }
+    .right-side{
+        background-color: #abd4ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .banner {
+      height: 100vh;
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 45px;
+      text-transform: uppercase;
+    }
+    input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border: 2px solid black;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      font-weight: bolder;
+    }
+    form{
+        display: flex;
+    }
+    #time {
+  font-size: 50px;
+  color: white;
+  font-weight: bolder;
+  word-spacing: 30px;
+}
+#titles li {
+  list-style: none;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+}
+#titles {
+  display: flex;
+  justify-content: space-between;
+  /* margin-left: 15px; */
+  margin-bottom: 60px;
+}
+
+.iconsend {
+  width: 16px;
+  height: 16px;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 9px;
+  background: black;
+  cursor: pointer;
+}
+
+.instaIcon {
+  width: 20px;
+  background: #ffc0a1;
+  padding: 10px;
+  border-radius: 5px;
+}
+.shopiIcon {
+  width: 23px;
+}
+.footer {
+  position: absolute;
+  bottom: 20px;
+}
+h4 {
+  color: gray;
+}
+    /* Media query for mobile view */
+    @media (max-width: 768px) {
+      .left-side {
+        display: none; /* Hide left image in mobile view */
+      }
+      .right-side {
+        padding: 20px;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <img class="banner" src="banner.png" alt="Left Side Image">
+    </div>
+    <div class="right-side">
+      <h2>Our website is coming soon !</h2>
+      <div class="counter" id="countdown">
+        <div id="time"></div>
+        <div id="titles">
+            <li>Days</li>
+            <li>Hours</li>
+            <li>Mins</li>
+            <li>Secs</li>
+        </div>
+      </div>
+      <form action="#" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <div class="btn">
+            <img src="send.png" alt="send" class="iconsend">
+            <input type="submit" value="Subscribe">
+        </div>
+      </form>
+      <div class="footer">
+        <img class="instaIcon" src="instagram.png" alt="">
+        <h4>This Shop is Powered By <img class="shopiIcon" src="shopify.png" alt=""> Shopify</h4>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("2024-12-31").getTime();
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+
+      // Get the current date and time
+      var now = new Date().getTime();
+
+      // Calculate the remaining time
+      var distance = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (10000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result
+      document.getElementById("time").innerHTML = days + " " + hours + " "
+      + minutes + " " + seconds + " ";
+
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
